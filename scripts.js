@@ -5,7 +5,8 @@ async function fetchNews(){
     try{
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
+        const { articles } = data;
+        displayNews(articles);
 
     } catch (error) {
         console.log('error:', error);
@@ -13,3 +14,14 @@ async function fetchNews(){
 };
 
 fetchNews();
+
+const displayNews = (articles) => {
+    const newsDiv = document.querySelector('#news');
+    for(const article of articles) {
+        const articleDiv = document.createElement('div');
+        const title = document.createElement('h4');
+        title.textContent = article.title;
+        articleDiv.appendChild(title);
+        newsDiv.appendChild(articleDiv);
+    }
+};
