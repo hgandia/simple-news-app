@@ -6,6 +6,7 @@ async function fetchNews(){
         const response = await fetch(url);
         const data = await response.json();
         const { articles } = data;
+        console.log(data);
         displayNews(articles);
 
     } catch (error) {
